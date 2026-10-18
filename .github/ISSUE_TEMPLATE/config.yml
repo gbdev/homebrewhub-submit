@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Game Boy / Game Boy Color database (Pull Requests)
+    url: https://github.com/gbdev/database
+    about: Comfortable with Git and JSON? Open a Pull Request adding your entry directly.
+  - name: Game Boy Advance database (Pull Requests)
+    url: https://github.com/gbadev-org/games
+    about: Open a Pull Request adding your GBA entry directly.
+  - name: NES database (Pull Requests)
+    url: https://github.com/nesdev-org/homebrew-db
+    about: Open a Pull Request adding your NES entry directly.

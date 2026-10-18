@@ -2,7 +2,7 @@
 
 Request your homebrew to be added to Homebrew Hub:
 
-File an [Issue](https://github.com/gbdev/homebrewhub-submit/issues) on this repository providing links, screenshots, roms, to the game you want to add.
+[Open a submission issue](https://github.com/gbdev/homebrewhub-submit/issues/new?template=submit-game.yml) on this repository and fill in the form with the details, links, screenshots and ROMs of the game you want to add.
 
 ---
 

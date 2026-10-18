@@ -1,0 +1,304 @@
+name: Submit a game
+description: Request a game, demo, tool or music release to be added to Homebrew Hub
+title: "[Submission]: "
+labels: ["submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for submitting to [Homebrew Hub](https://hh.gbdev.io)!
+
+        Fill in as much as you can: only the fields marked with a red asterisk are required. We'll use this information to write the entry for the database (see the [entry schema](https://github.com/gbdev/database/blob/master/schemas/game-schema-d5.json)).
+
+  # --- Basics ---
+
+  - type: input
+    id: title
+    attributes:
+      label: Title
+      description: Full name of the entry.
+      placeholder: "e.g. Tobu Tobu Girl Deluxe"
+    validations:
+      required: true
+
+  - type: textarea
+    id: alias
+    attributes:
+      label: Alternative titles
+      description: Other names the entry is known by (one per line), such as translated titles or abbreviations.
+    validations:
+      required: false
+
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      description: Target console. Pick "GBC" for Game Boy Color exclusive or enhanced releases.
+      options:
+        - GB
+        - GBC
+        - GBA
+        - NES
+    validations:
+      required: true
+
+  - type: dropdown
+    id: typetag
+    attributes:
+      label: Type
+      description: What kind of software is this?
+      options:
+        - game
+        - demo
+        - tool
+        - music
+        - hackrom
+      default: 0
+    validations:
+      required: true
+
+  - type: textarea
+    id: developer
+    attributes:
+      label: Developer(s)
+      description: |
+        One person or team per line. You can optionally add a link to their website/profile and their role.
+      placeholder: |
+        Jane Doe - https://janedoe.itch.io - code, graphics
+        John Smith - music
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: A text description of the entry (plot, instructions, controls, ...). Markdown is fine.
+    validations:
+      required: true
+
+  - type: input
+    id: date
+    attributes:
+      label: Release date
+      description: When the entry was first released, as `YYYY-MM-DD`. If you don't know the exact date, `YYYY-MM` or `YYYY` is fine.
+      placeholder: "2024-07-21"
+    validations:
+      required: false
+
+  # --- Files and media ---
+
+  - type: textarea
+    id: files
+    attributes:
+      label: ROM files
+      description: |
+        Attach the ROM(s) as a `.zip` (drag and drop it here) or link to where they can be downloaded.
+        If there are several files (versions, manual, patches), list them and tell us which one should be the default one played in the browser.
+      placeholder: |
+        mygame-v1.1.gbc (latest, default)
+        mygame-v1.0.gbc
+        manual.pdf
+    validations:
+      required: true
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Attach screenshots (drag and drop images here), ideally at native resolution and in PNG format.
+    validations:
+      required: false
+
+  - type: input
+    id: video
+    attributes:
+      label: Video
+      description: URL of a gameplay video or trailer.
+      placeholder: "https://www.youtube.com/watch?v=..."
+    validations:
+      required: false
+
+  # --- Links ---
+
+  - type: textarea
+    id: website
+    attributes:
+      label: Website(s)
+      description: Official page, itch.io page, store page, ... (one per line).
+      placeholder: "https://janedoe.itch.io/mygame"
+    validations:
+      required: false
+
+  - type: input
+    id: repository
+    attributes:
+      label: Source code repository
+      description: Link to the source code, if it's available.
+      placeholder: "https://github.com/janedoe/mygame"
+    validations:
+      required: false
+
+  - type: input
+    id: physical-release
+    attributes:
+      label: Physical release
+      description: If there is (or was) a physical cartridge edition, a link to where it can be bought or to more information about it.
+    validations:
+      required: false
+
+  # --- Licensing ---
+
+  - type: input
+    id: gameLicense
+    attributes:
+      label: Code license
+      description: License of the software/code, as an [SPDX identifier](https://spdx.org/licenses/). Leave empty if the entry isn't released under a license.
+      placeholder: "MIT, GPL-3.0-or-later, ..."
+    validations:
+      required: false
+
+  - type: input
+    id: assetsLicense
+    attributes:
+      label: Assets license
+      description: License of the assets (graphics, music, ...), as an [SPDX identifier](https://spdx.org/licenses/), if different from the code license.
+      placeholder: "CC-BY-4.0, CC-BY-NC-SA-4.0, ..."
+    validations:
+      required: false
+
+  # --- Classification ---
+
+  - type: checkboxes
+    id: genres
+    attributes:
+      label: Genres
+      description: Pick all the categories that apply.
+      options:
+        - label: Action
+        - label: Adventure
+        - label: Arcade
+        - label: Arena
+        - label: Card Game
+        - label: Educational
+        - label: Fighting
+        - label: Interactive Fiction
+        - label: Platform
+        - label: Point & Click
+        - label: Puzzle
+        - label: Racing
+        - label: Rhythm
+        - label: RPG
+        - label: Shooter
+        - label: Simulation
+        - label: Sports
+        - label: Strategy
+        - label: Survival
+        - label: Visual Novel
+
+  - type: checkboxes
+    id: hardware
+    attributes:
+      label: Hardware features
+      description: Does the entry use any special hardware or accessory?
+      options:
+        - label: Game Boy Printer (`hw:gbprinter`)
+        - label: Game Boy Camera (`hw:gbcamera`)
+        - label: Infrared (`hw:ir`)
+        - label: Link cable (`hw:link`)
+        - label: MBC3 real-time clock (`hw:mbc3rtc`)
+        - label: MBC5 rumble (`hw:mbc5rumble`)
+        - label: MBC7 accelerometer (`hw:mbc7accelerometer`)
+        - label: Mega Duck keyboard (`hw:megaduck-keyboard`)
+
+  - type: checkboxes
+    id: flags
+    attributes:
+      label: Status
+      options:
+        - label: This is a work in progress (demo, beta, unfinished)
+        - label: This is a commercial release (the main or most complete version is sold)
+        - label: This contains NSFW or potentially controversial content
+
+  # --- AI disclosure ---
+
+  - type: markdown
+    attributes:
+      value: |
+        ### AI disclosure
+
+        Let us know if, and how, AI was used during development. This will be shown on the entry page.
+
+        - **Assisted**: made by humans, with AI as a tool (e.g. autocomplete, fixing a specific function, upscaling sprites, cleaning up audio)
+        - **Generated**: AI produced significant portions under human direction, which were then reviewed and integrated
+        - **Authored**: fully AI-produced with minimal human involvement (e.g. "vibe coded", output accepted as-is)
+
+  - type: dropdown
+    id: ai-code
+    attributes:
+      label: AI usage in code
+      options:
+        - I'd rather not say
+        - No AI used
+        - Assisted
+        - Generated
+        - Authored
+        - Used, level unspecified
+      default: 0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ai-assets
+    attributes:
+      label: AI usage in assets (graphics, music, sound effects, writing)
+      options:
+        - I'd rather not say
+        - No AI used
+        - Assisted
+        - Generated
+        - Authored
+        - Used, level unspecified
+      default: 0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: ai-toolchain
+    attributes:
+      label: AI-generated toolchain
+      description: Was any AI-generated tool or dependency used to build the entry (e.g. a vibe-coded compiler or music driver)?
+      options:
+        - I don't know / I'd rather not say
+        - "No"
+        - "Yes"
+      default: 0
+    validations:
+      required: true
+
+  # --- Permissions ---
+
+  - type: checkboxes
+    id: permissions
+    attributes:
+      label: Distribution
+      description: By default, Homebrew Hub lets visitors download the ROMs and play them in the browser emulator. Tick the boxes below to opt out.
+      options:
+        - label: Do NOT allow downloading the files
+        - label: Do NOT allow playing in the browser emulator
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Anything else?
+      description: Extra information or requests for the maintainers.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: consent
+    attributes:
+      label: Permission
+      options:
+        - label: I am the author of this entry, or I have permission from the authors (or the license allows) to redistribute it on Homebrew Hub.
+          required: true
