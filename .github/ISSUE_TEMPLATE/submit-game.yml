@@ -73,9 +73,23 @@ body:
     id: description
     attributes:
       label: Description
-      description: A text description of the entry (plot, instructions, controls, ...). Markdown is fine.
+      description: A text description of the entry (plot, features, ...). Markdown is supported.
     validations:
-      required: true
+      required: false
+
+  - type: textarea
+    id: manual
+    attributes:
+      label: Manual
+      description: |
+        Instructions, controls, tips, ... Markdown is supported.
+        If the manual is a separate document (e.g. a PDF), you can attach it in the "Additional files" field below instead.
+      placeholder: |
+        ## Controls
+        - **A**: jump
+        - **B**: shoot
+    validations:
+      required: false
 
   - type: input
     id: date
@@ -94,13 +108,25 @@ body:
       label: ROM files
       description: |
         Attach the ROM(s) as a `.zip` (drag and drop it here) or link to where they can be downloaded.
-        If there are several files (versions, manual, patches), list them and tell us which one should be the default one played in the browser.
+        If there are several ROMs (e.g. different versions), list them: the first one will be the default one played in the online emulator.
       placeholder: |
-        mygame-v1.1.gbc (latest, default)
+        mygame-v1.1.gbc
         mygame-v1.0.gbc
-        manual.pdf
     validations:
       required: true
+
+  - type: textarea
+    id: additional-files
+    attributes:
+      label: Additional files
+      description: |
+        Any other files to include with the entry, such as a manual (PDF), patches, or release archives (e.g. with source code or extras).
+        Attach them (as a `.zip` if needed) or link to them, and describe what each file is for.
+      placeholder: |
+        manual.pdf - the game manual
+        mygame-easy.ips - patch adding an easy mode, applies to mygame-v1.1.gbc
+    validations:
+      required: false
 
   - type: textarea
     id: screenshots
@@ -238,7 +264,6 @@ body:
     attributes:
       label: AI usage in code
       options:
-        - I'd rather not say
         - No AI used
         - Assisted
         - Generated
@@ -253,7 +278,6 @@ body:
     attributes:
       label: AI usage in assets (graphics, music, sound effects, writing)
       options:
-        - I'd rather not say
         - No AI used
         - Assisted
         - Generated
@@ -269,7 +293,7 @@ body:
       label: AI-generated toolchain
       description: Was any AI-generated tool or dependency used to build the entry (e.g. a vibe-coded compiler or music driver)?
       options:
-        - I don't know / I'd rather not say
+        - I don't know
         - "No"
         - "Yes"
       default: 0
