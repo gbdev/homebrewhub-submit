@@ -236,6 +236,9 @@ body:
         - label: MBC5 rumble (`hw:mbc5rumble`)
         - label: MBC7 accelerometer (`hw:mbc7accelerometer`)
         - label: Mega Duck keyboard (`hw:megaduck-keyboard`)
+        - label: Mega Duck printer (`hw:megaduck-printer`)
+        - label: Orange FM radio card (`hw:orange-fm-radio-card`)
+        - label: Super Game Boy features (`hw:sgb`)
 
   - type: checkboxes
     id: flags
